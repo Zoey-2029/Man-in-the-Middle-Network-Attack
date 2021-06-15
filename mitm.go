@@ -10,15 +10,9 @@
  *   sending fakebank.com's response back to the client... but with an evil
  *   twist.
  *
- * The segments left to you to complete are marked by TODOs. It may be useful
- * to search for them within this file. Lastly, don't dive blindly into coding
- * this part. READ THE STARTER CODE! It is documented in detail for a reason.
  *
- * This project based on the University of Michigan EECS388 Course Project.
  */
 
-// TODO #0: Read through this code in its entirety, to understand its
-//          structure and functionality.
 
 package main
 

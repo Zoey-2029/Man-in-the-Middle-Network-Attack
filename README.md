@@ -10,7 +10,6 @@ In this project, we will perform a MITM attack as an attacker. And we divide the
  * **HTTP attack**: The attacker listens for HTTP requests, forward them to the bank server, and return the response from the server back to the client unchanged.
 
 ## Files
-* correct_mitm_output.txt: 
 * /network/client: simulate the behavior of an oblivious client that will fall victim to your monster-in-the-middle.
 * /network/dns: simulate the behavior of an innocent DNS server
 * /network/http: simulate the behavior of a true HTTP server (fakebank.com)

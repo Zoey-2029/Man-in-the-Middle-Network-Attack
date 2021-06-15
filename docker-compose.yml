@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  dns:
+    build: ./
+    command: go run network/dns/dns_server.go
+    networks:
+      bankwifi:
+        ipv4_address: 10.38.8.2
+  http:
+    build: ./
+    command: go run network/http/http_server.go
+    networks:
+      bankwifi:
+        ipv4_address: 10.38.8.3
+  client:
+    build: ./
+    volumes:
+      - type: bind
+        source: ./output/
+        target: /p4/output/
+    depends_on:
+      - "dns"
+      - "http"
+    command: >
+      /bin/sh -c "tcpdump -i any -w output/packetdump.pcap &
+                  go run fakebank.com/mitm & 
+                  sleep 7 && 
+                  go run network/client/client.go;
+                  kill -s INT %1;
+                  sleep 2"
+    networks:
+      bankwifi:
+        ipv4_address: 10.38.8.4
+
+networks:
+  bankwifi:
+    ipam:
+      config:
+        - subnet: "10.38.8.0/24"

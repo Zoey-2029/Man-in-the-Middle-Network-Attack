@@ -1,0 +1,61 @@
+/* =====================================================================
+	CS 155 Project 3
+	Part 4. Monster-in-the-Middle Attack
+	
+	CORRECT MITM OUTPUT
+	When mitm.go is fully implemented, your output from `bash run_client.sh`
+	should appear as shown below, with the exception that the lines beginning
+	with `tcpdump` don't need to exactly match.
+   =====================================================================
+*/
+
+Attaching to part4_client_1
+client_1  | tcpdump: data link type LINUX_SLL2
+client_1  | tcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes
+client_1  | ==========    STAGE 1/4: Logging in...        ==========
+client_1  | Client: Attempting login
+client_1  | MITM:   Intercepted Credentials
+client_1  |         Username:  Sabrina
+client_1  |         Password:  PleaseComeBack
+client_1  | MITM:   Intercepted Cookie Set By Server
+client_1  |         Name:   session_id
+client_1  |         Value:  IReallyLikeSecureCookies
+client_1  | Client: Successfully logged in
+client_1  | Client: Login Response: LOGIN SUCCESSFUL. HERE IS A COOKIE
+client_1  | ==========    STAGE 2/4: Visiting homepage...     ==========
+client_1  | Client: Getting homepage
+client_1  | MITM:   Intercepted Cookie Sent By Client
+client_1  |         Name:   session_id
+client_1  |         Value:  IReallyLikeSecureCookies
+client_1  | MITM:   Intercepted Cookie Set By Server
+client_1  |         Name:   AnotherCookie
+client_1  |         Value:  WeAreTrackingYou O_O
+client_1  | Client: Successfully retrieved homepage
+client_1  | Client: Main Page Response: WELCOME TO BANK.COM
+client_1  | ==========    STAGE 3/4: Transferring funds...    ==========
+client_1  | Client: Transferring from sabrina to jensen
+client_1  | MITM:   Intercepted Cookie Sent By Client
+client_1  |         Name:   session_id
+client_1  |         Value:  IReallyLikeSecureCookies
+client_1  | MITM:   Intercepted Cookie Sent By Client
+client_1  |         Name:   AnotherCookie
+client_1  |         Value:  WeAreTrackingYou O_O
+client_1  | Client: Successfully transferred
+client_1  | Client: Transfer Page Response: sabrina SENT $1000 TO jensen
+client_1  | ==========    STAGE 4/4: Logging out...        ==========
+client_1  | Client: Logging out
+client_1  | MITM:   Intercepted Cookie Sent By Client
+client_1  |         Name:   session_id
+client_1  |         Value:  IReallyLikeSecureCookies
+client_1  | MITM:   Intercepted Cookie Sent By Client
+client_1  |         Name:   AnotherCookie
+client_1  |         Value:  WeAreTrackingYou O_O
+client_1  | MITM:   Intercepted Cookie Set By Server
+client_1  |         Name:   session_id
+client_1  |         Value:
+client_1  | Client: Successfully received logout response
+client_1  | Client: Logout Page Response: LOGOUT SUCCESSFUL
+client_1  | 52 packets captured
+client_1  | 86 packets received by filter
+client_1  | 0 packets dropped by kernel
+part4_client_1 exited with code 0
